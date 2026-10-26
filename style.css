@@ -1,0 +1,884 @@
+/* =====================================================
+   Bengkel Motor Sinar Jaya - style.css
+   Disusun oleh: Akrom Taufiqurrozak (A12.2025.07419)
+   File ini dipanggil SETELAH Bootstrap, sehingga aturan
+   di sini dapat menimpa gaya bawaan Bootstrap.
+   ===================================================== */
+
+/* ================= 1. RESET & VARIABEL ================= */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #e63b2e;
+  --primary-dark: #c22a1f;
+  --dark: #1c1f26;
+  --dark-2: #2a2e38;
+  --light: #f5f6f8;
+  --white: #ffffff;
+  --text: #333a45;
+  --muted: #6b7280;
+  --radius: 12px;
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  --transition: 0.3s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Menetralkan margin bawaan Bootstrap (reboot) pada elemen teks */
+h1, h2, h3, p, ul, dl, dd, address {
+  margin-bottom: 0;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ================= 2. TOMBOL (+ efek hover) ================= */
+.button {
+  display: inline-block;
+  padding: 12px 26px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.button--primary {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.button--primary:hover {
+  background: var(--primary-dark);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(230, 59, 46, 0.35);
+}
+
+.button--outline {
+  border-color: var(--white);
+  color: var(--white);
+}
+
+.button--outline:hover {
+  background: var(--white);
+  color: var(--dark);
+}
+
+/* ================= 3. HEADER & NAVIGASI (Flexbox) ================= */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--dark);
+  transition: box-shadow var(--transition);
+}
+
+.header.scrolled {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--white);
+  font-size: 1.4rem;
+}
+
+.logo:hover {
+  color: var(--white);
+}
+
+.logo__img {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.6s ease;
+}
+
+.logo:hover .logo__img {
+  transform: rotate(180deg);
+}
+
+.logo__text strong {
+  color: var(--primary);
+}
+
+.nav__list {
+  display: flex;
+  gap: 28px;
+}
+
+.nav__link {
+  color: #d1d5db;
+  font-weight: 500;
+  position: relative;
+  transition: color var(--transition);
+}
+
+/* Garis bawah animasi saat hover */
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width var(--transition);
+}
+
+.nav__link:hover,
+.nav__link.active {
+  color: var(--white);
+}
+
+.nav__link:hover::after,
+.nav__link.active::after {
+  width: 100%;
+}
+
+/* Tombol hamburger (hanya tampil di mobile) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.nav-toggle span {
+  width: 26px;
+  height: 3px;
+  background: var(--white);
+  border-radius: 3px;
+  transition: var(--transition);
+}
+
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ================= 4. HERO (Grid) ================= */
+.hero {
+  background:
+    linear-gradient(120deg, rgba(28, 31, 38, 0.95), rgba(42, 46, 56, 0.85)),
+    repeating-linear-gradient(45deg, #2a2e38 0 20px, #23262e 20px 40px);
+  color: var(--white);
+  padding: 90px 0 70px;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.hero__badge {
+  display: inline-block;
+  background: rgba(230, 59, 46, 0.15);
+  color: #ff8a80;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  margin-bottom: 18px;
+}
+
+.hero__title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+
+.hero__title span {
+  color: var(--primary);
+}
+
+.hero__desc {
+  color: #cbd5e1;
+  margin-bottom: 30px;
+  max-width: 560px;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.stats__item {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  padding: 22px;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.stats__item:hover {
+  background: rgba(230, 59, 46, 0.15);
+  border-color: var(--primary);
+}
+
+.stats__item strong {
+  display: block;
+  font-size: 1.8rem;
+  color: var(--primary);
+}
+
+.stats__item span {
+  font-size: 0.9rem;
+  color: #cbd5e1;
+}
+
+/* ================= 5. SECTION UMUM ================= */
+.section {
+  padding: 80px 0;
+}
+
+.section--alt {
+  background: var(--light);
+}
+
+.section__header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section__title {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+
+.section__subtitle {
+  color: var(--muted);
+}
+
+/* ================= 6. FILTER & KARTU LAYANAN (Grid + hover) ================= */
+.filter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+
+.filter__btn {
+  padding: 8px 20px;
+  border-radius: 50px;
+  border: 2px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter__btn:hover,
+.filter__btn.active {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.service-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  border-top: 4px solid var(--primary);
+  transition: transform var(--transition), box-shadow var(--transition);
+  animation: fadeIn 0.4s ease;
+}
+
+/* Kartu terangkat saat hover */
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.service-card__icon {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+  transition: transform var(--transition);
+}
+
+.service-card:hover .service-card__icon {
+  transform: scale(1.2);
+}
+
+.service-card__title {
+  font-size: 1.25rem;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+
+.service-card__text {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 14px;
+}
+
+.service-card__price {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= 7. ESTIMASI BIAYA ================= */
+.input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color var(--transition);
+}
+
+.input:hover,
+.input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+fieldset {
+  border: none;
+  margin-bottom: 20px;
+}
+
+legend {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 10px;
+}
+
+.estimate {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 50px;
+  align-items: start;
+}
+
+.estimate__info p {
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+.estimate__note {
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.estimate__form {
+  background: var(--white);
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 8px;
+  margin: 0;
+  border-bottom: 1px dashed #e5e7eb;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.check:hover {
+  background: #fff1f0;
+}
+
+.check input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary);
+}
+
+.check span {
+  margin-left: auto;
+  color: var(--muted);
+}
+
+.estimate__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--dark);
+  color: var(--white);
+  padding: 16px 20px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.estimate__total strong {
+  font-size: 1.5rem;
+  color: #ff8a80;
+}
+
+/* ================= 8. FORM BOOKING (kustomisasi Bootstrap) ================= */
+.booking-form {
+  background: var(--white);
+  padding: 32px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border-top: 4px solid var(--primary);
+}
+
+.booking-form label {
+  font-weight: 600;
+  color: var(--dark);
+}
+
+/* Hover & fokus pada input Bootstrap */
+.booking-form .form-control,
+.booking-form .form-select {
+  border-radius: 8px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.booking-form .form-control:hover,
+.booking-form .form-select:hover {
+  border-color: var(--primary);
+}
+
+.booking-form .form-control:focus,
+.booking-form .form-select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.2rem rgba(230, 59, 46, 0.2);
+}
+
+/* Warna radio Bootstrap disesuaikan dengan tema */
+.booking-form .form-check-label,
+.booking-form .form-check-input {
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.booking-form .form-check-input:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.booking-form .form-check-input:hover {
+  border-color: var(--primary);
+}
+
+.booking-form .form-check-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 0.2rem rgba(230, 59, 46, 0.2);
+}
+
+.booking-form .btn {
+  border-radius: 50px;
+  font-weight: 600;
+  padding: 10px 20px;
+  transition: var(--transition);
+}
+
+.booking-form .btn-danger {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.booking-form .btn-danger:hover {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(230, 59, 46, 0.35);
+}
+
+/* Tiket hasil booking */
+.ticket {
+  margin-top: 24px;
+  border: 2px dashed #10b981;
+  border-radius: var(--radius);
+  animation: fadeIn 0.4s ease;
+}
+
+.ticket h3 {
+  font-size: 1.25rem;
+  margin-bottom: 6px;
+}
+
+.ticket__number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--dark);
+  letter-spacing: 2px;
+}
+
+.ticket dl {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 4px 10px;
+  margin-top: 10px;
+}
+
+/* Tabel riwayat booking */
+.history__title {
+  font-size: 1.3rem;
+  color: var(--dark);
+  margin: 36px 0 14px;
+}
+
+/* Tabel bisa digeser ke samping di layar kecil, bukan melebarkan halaman */
+.table-responsive {
+  overflow-x: auto;
+}
+
+.history__table {
+  /* Variabel CSS Bootstrap 5 untuk warna baris saat hover */
+  --bs-table-hover-bg: #ffe4e1;
+  background: var(--white);
+  white-space: nowrap;
+  font-size: 0.95rem;
+}
+
+.history__table tbody tr.new-row {
+  animation: fadeIn 0.5s ease;
+}
+
+/* ================= 9. FAQ ACCORDION ================= */
+.faq-list {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-item {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.faq-item__head {
+  width: 100%;
+  text-align: left;
+  padding: 18px 50px 18px 22px;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--dark);
+  cursor: pointer;
+  position: relative;
+  transition: background var(--transition), color var(--transition);
+}
+
+.faq-item__head:hover {
+  background: #fff1f0;
+  color: var(--primary);
+}
+
+.faq-item__head::after {
+  content: "+";
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.4rem;
+  color: var(--primary);
+  transition: transform var(--transition);
+}
+
+.faq-item.open .faq-item__head::after {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.faq-item__body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition);
+}
+
+.faq-item__body p {
+  padding: 0 22px 18px;
+  color: var(--muted);
+}
+
+/* ================= 10. KONTAK (Flexbox + hover) ================= */
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.contact__card {
+  flex: 1 1 260px;
+  background: var(--dark);
+  color: var(--white);
+  border-radius: var(--radius);
+  padding: 28px;
+  border-bottom: 4px solid transparent;
+  transition: var(--transition);
+}
+
+.contact__card:hover {
+  transform: translateY(-4px);
+  border-bottom-color: var(--primary);
+}
+
+.contact__card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+}
+
+.contact__card address,
+.contact__card p {
+  font-style: normal;
+  color: #cbd5e1;
+}
+
+/* ================= 11. FOOTER + IDENTITAS ================= */
+.footer {
+  background: #111318;
+  color: #9ca3af;
+  padding: 32px 0;
+  font-size: 0.9rem;
+}
+
+.footer__brand {
+  font-size: 1.2rem;
+  color: var(--white);
+}
+
+.footer__brand strong {
+  color: var(--primary);
+}
+
+.identity {
+  display: inline-block;
+  padding: 12px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.identity:hover {
+  border-color: var(--primary);
+  background: rgba(230, 59, 46, 0.08);
+}
+
+.identity__label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.identity__name {
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.identity__nim {
+  color: #ff8a80;
+  font-weight: 600;
+}
+
+/* Tombol kembali ke atas */
+.to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  background: var(--primary);
+  color: var(--white);
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  z-index: 50;
+}
+
+.to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.to-top:hover {
+  background: var(--primary-dark);
+  transform: translateY(-3px);
+}
+
+/* ================= 12. RESPONSIVE (Media Query) ================= */
+/* Tablet: lebar layar maksimal 900px */
+@media (max-width: 900px) {
+  .hero__inner,
+  .estimate {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Mobile: lebar layar maksimal 768px */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .main-nav {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: var(--dark);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--transition);
+  }
+
+  .main-nav.open {
+    max-height: 400px;
+  }
+
+  .nav__list {
+    flex-direction: column;
+    gap: 0;
+    padding: 10px 20px 20px;
+  }
+
+  .nav__link {
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .nav__link::after {
+    display: none;
+  }
+
+  .hero {
+    padding: 60px 0 50px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .section {
+    padding: 60px 0;
+  }
+
+  .estimate__form,
+  .booking-form {
+    padding: 20px;
+  }
+}
+
+/* HP kecil: lebar layar maksimal 420px */
+@media (max-width: 420px) {
+  .hero__actions .button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .ticket dl {
+    grid-template-columns: 1fr;
+  }
+
+  .ticket dd {
+    margin-bottom: 6px;
+  }
+
+  .booking-form .form-check-inline {
+    display: block;
+    margin-bottom: 6px;
+  }
+}

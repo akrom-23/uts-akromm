@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <!-- Meta wajib Bootstrap: charset + viewport (responsive) -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Bengkel Motor Sinar Jaya - servis, perbaikan, dan sparepart motor terpercaya.">
+  <meta name="author" content="Akrom Taufiqurrozak - A12.2025.07419">
+  <title>Bengkel Motor Sinar Jaya</title>
+
+  <!-- Bootstrap 5.3.8 CSS
+       Cara pertama (PPT slide 8): dari internet / CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <!-- Cara kedua (PPT slide 9): file lokal hasil unduhan, dipakai saat offline -->
+  <link rel="stylesheet" href="bootstrap-5.3.8-dist/bootstrap-5.3.8-dist/css/bootstrap.min.css">
+
+
+  <!-- CSS buatan sendiri (dipanggil terakhir agar bisa menimpa gaya Bootstrap) -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ===== HEADER & NAVIGASI ===== -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#beranda" class="logo">
+        <img src="assets/images/logo.svg" alt="Logo Bengkel Motor Sinar Jaya" class="logo__img">
+        <span class="logo__text">Sinar<strong>Jaya</strong></span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" id="navMenu" aria-label="Navigasi utama">
+        <ul class="nav__list">
+          <li><a href="#beranda" class="nav__link">Beranda</a></li>
+          <li><a href="#layanan" class="nav__link">Layanan</a></li>
+          <li><a href="#estimasi" class="nav__link">Estimasi Biaya</a></li>
+          <li><a href="#booking" class="nav__link">Booking</a></li>
+          <li><a href="#faq" class="nav__link">FAQ</a></li>
+          <li><a href="#kontak" class="nav__link">Kontak</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="beranda">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <p class="hero__badge">Buka Setiap Hari 08.00 – 20.00</p>
+          <h1 class="hero__title">Motor Sehat, <span>Perjalanan Lancar</span></h1>
+          <p class="hero__desc">
+            Bengkel Motor Sinar Jaya melayani servis rutin, perbaikan mesin, kelistrikan,
+            hingga penjualan sparepart original. Dikerjakan oleh mekanik bersertifikat
+            dengan harga transparan.
+          </p>
+          <div class="hero__actions">
+            <a href="#booking" class="button button--primary">Booking Servis</a>
+            <a href="#layanan" class="button button--outline">Lihat Layanan</a>
+          </div>
+        </div>
+
+        <ul class="stats">
+          <li class="stats__item"><strong>10+</strong><span>Tahun Pengalaman</span></li>
+          <li class="stats__item"><strong>8</strong><span>Mekanik Ahli</span></li>
+          <li class="stats__item"><strong>5.000+</strong><span>Motor Ditangani</span></li>
+          <li class="stats__item"><strong>4.9★</strong><span>Rating Pelanggan</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== LAYANAN ===== -->
+    <section class="section" id="layanan">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title">Layanan Kami</h2>
+          <p class="section__subtitle">Pilih kategori untuk menyaring layanan.</p>
+        </header>
+
+        <div class="filter" role="group" aria-label="Filter kategori layanan">
+          <button class="filter__btn active" data-filter="semua">Semua</button>
+          <button class="filter__btn" data-filter="servis">Servis</button>
+          <button class="filter__btn" data-filter="perbaikan">Perbaikan</button>
+          <button class="filter__btn" data-filter="sparepart">Sparepart</button>
+        </div>
+
+        <div class="services">
+          <article class="service-card" data-category="servis">
+            <div class="service-card__icon">🛠️</div>
+            <h3 class="service-card__title">Servis Rutin</h3>
+            <p class="service-card__text">Pengecekan menyeluruh, setel rantai, rem, karburator/injeksi, dan busi.</p>
+            <p class="service-card__price">Mulai Rp75.000</p>
+          </article>
+
+          <article class="service-card" data-category="servis">
+            <div class="service-card__icon">🛢️</div>
+            <h3 class="service-card__title">Ganti Oli</h3>
+            <p class="service-card__text">Oli mesin dan oli gardan original sesuai rekomendasi pabrikan.</p>
+            <p class="service-card__price">Mulai Rp50.000</p>
+          </article>
+
+          <article class="service-card" data-category="perbaikan">
+            <div class="service-card__icon">⚙️</div>
+            <h3 class="service-card__title">Turun Mesin</h3>
+            <p class="service-card__text">Overhaul mesin, ganti piston, ring, klep, dan perbaikan blok silinder.</p>
+            <p class="service-card__price">Mulai Rp600.000</p>
+          </article>
+
+          <article class="service-card" data-category="perbaikan">
+            <div class="service-card__icon">⚡</div>
+            <h3 class="service-card__title">Kelistrikan</h3>
+            <p class="service-card__text">Perbaikan aki, kiprok, starter, lampu, dan jalur kabel bodi.</p>
+            <p class="service-card__price">Mulai Rp60.000</p>
+          </article>
+
+          <article class="service-card" data-category="sparepart">
+            <div class="service-card__icon">🛞</div>
+            <h3 class="service-card__title">Ban &amp; Velg</h3>
+            <p class="service-card__text">Ban tubeless berbagai merek, gratis pemasangan dan balancing.</p>
+            <p class="service-card__price">Mulai Rp180.000</p>
+          </article>
+
+          <article class="service-card" data-category="sparepart">
+            <div class="service-card__icon">🔩</div>
+            <h3 class="service-card__title">Sparepart Original</h3>
+            <p class="service-card__text">Kampas rem, gear set, filter udara, dan aki dengan garansi resmi.</p>
+            <p class="service-card__price">Harga sesuai part</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ESTIMASI BIAYA (fitur interaktif) ===== -->
+    <section class="section section--alt" id="estimasi">
+      <div class="container estimate">
+        <div class="estimate__info">
+          <h2 class="section__title">Hitung Estimasi Biaya</h2>
+          <p>Centang layanan yang dibutuhkan dan pilih jenis motor. Total biaya akan dihitung otomatis.</p>
+          <p class="estimate__note">*Harga estimasi, biaya akhir menyesuaikan kondisi motor.</p>
+        </div>
+
+        <form class="estimate__form" id="estimateForm">
+          <fieldset>
+            <legend>Jenis Motor</legend>
+            <select id="motorType" class="input">
+              <option value="1">Matic / Bebek</option>
+              <option value="1.2">Sport 150cc</option>
+              <option value="1.5">Moge 250cc ke atas</option>
+            </select>
+          </fieldset>
+
+          <fieldset>
+            <legend>Pilih Layanan</legend>
+            <label class="check"><input type="checkbox" value="75000"> Servis Rutin <span>Rp75.000</span></label>
+            <label class="check"><input type="checkbox" value="50000"> Ganti Oli <span>Rp50.000</span></label>
+            <label class="check"><input type="checkbox" value="45000"> Ganti Kampas Rem <span>Rp45.000</span></label>
+            <label class="check"><input type="checkbox" value="60000"> Cek Kelistrikan <span>Rp60.000</span></label>
+            <label class="check"><input type="checkbox" value="35000"> Cuci Motor <span>Rp35.000</span></label>
+          </fieldset>
+
+          <div class="estimate__total">
+            <span>Total Estimasi</span>
+            <strong id="totalPrice">Rp0</strong>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== BOOKING: FORM BOOTSTRAP (fitur interaktif) ===== -->
+    <section class="section" id="booking">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title">Booking Servis</h2>
+          <p class="section__subtitle">Isi formulir untuk mendapatkan nomor antrean tanpa perlu menunggu lama.</p>
+        </header>
+
+        <!-- Grid Bootstrap: container > row > col -->
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+            <form id="bookingForm" class="booking-form" novalidate>
+
+              <!-- Baris 1: input type text -->
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="nama" class="form-label">Nama Lengkap</label>
+                  <input type="text" id="nama" class="form-control" placeholder="Contoh: Budi Santoso">
+                  <div class="invalid-feedback" id="errNama"></div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="telp" class="form-label">No. WhatsApp</label>
+                  <input type="text" id="telp" class="form-control" inputmode="numeric" placeholder="08xxxxxxxxxx">
+                  <div class="invalid-feedback" id="errTelp"></div>
+                </div>
+              </div>
+
+              <!-- Baris 2: input text + dropdown select -->
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="plat" class="form-label">Nomor Polisi</label>
+                  <input type="text" id="plat" class="form-control" placeholder="H 1234 AB">
+                  <div class="invalid-feedback" id="errPlat"></div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="merek" class="form-label">Merek Motor</label>
+                  <select id="merek" class="form-select">
+                    <option value="" selected disabled>-- Pilih merek motor --</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Yamaha">Yamaha</option>
+                    <option value="Suzuki">Suzuki</option>
+                    <option value="Kawasaki">Kawasaki</option>
+                    <option value="Lainnya">Lainnya</option>
+                  </select>
+                  <div class="invalid-feedback" id="errMerek"></div>
+                </div>
+              </div>
+
+              <!-- Baris 3: dropdown select + input tanggal -->
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="jenisLayanan" class="form-label">Jenis Layanan</label>
+                  <select id="jenisLayanan" class="form-select">
+                    <option value="" selected disabled>-- Pilih layanan --</option>
+                    <option value="Servis Rutin">Servis Rutin</option>
+                    <option value="Ganti Oli">Ganti Oli</option>
+                    <option value="Turun Mesin">Turun Mesin</option>
+                    <option value="Kelistrikan">Kelistrikan</option>
+                    <option value="Ganti Ban">Ganti Ban</option>
+                  </select>
+                  <div class="invalid-feedback" id="errLayanan"></div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="tanggal" class="form-label">Tanggal Servis</label>
+                  <input type="date" id="tanggal" class="form-control">
+                  <div class="invalid-feedback" id="errTanggal"></div>
+                </div>
+              </div>
+
+              <!-- Radio button -->
+              <div class="mb-3">
+                <label class="form-label d-block">Metode Servis</label>
+                <div class="form-check form-check-inline">
+                  <input type="radio" id="metodeBengkel" name="metode" value="Datang ke Bengkel"
+                    class="form-check-input">
+                  <label class="form-check-label" for="metodeBengkel">Datang ke Bengkel</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input type="radio" id="metodePanggilan" name="metode" value="Servis Panggilan"
+                    class="form-check-input">
+                  <label class="form-check-label" for="metodePanggilan">Servis Panggilan ke Rumah</label>
+                </div>
+                <small class="form-text text-muted d-none" id="infoPanggilan">
+                  Servis panggilan dikenakan biaya tambahan Rp25.000 (maks. 5 km).
+                </small>
+                <div class="invalid-feedback" id="errMetode"></div>
+              </div>
+
+              <!-- Textarea alamat -->
+              <div class="mb-3">
+                <label for="alamat" class="form-label">Alamat Lengkap</label>
+                <textarea id="alamat" class="form-control" rows="3"
+                  placeholder="Contoh: Jl. Pemuda No. 10, Semarang Tengah"></textarea>
+                <div class="invalid-feedback" id="errAlamat"></div>
+              </div>
+
+              <!-- Textarea keluhan -->
+              <div class="mb-3">
+                <label for="keluhan" class="form-label">Keluhan <small class="text-muted">(opsional)</small></label>
+                <textarea id="keluhan" class="form-control" rows="2"
+                  placeholder="Contoh: mesin brebet saat digas"></textarea>
+              </div>
+
+              <!-- Tombol Bootstrap -->
+              <div class="row g-2">
+                <div class="col-sm-8">
+                  <button type="submit" class="btn btn-danger w-100">Kirim Booking</button>
+                </div>
+                <div class="col-sm-4">
+                  <button type="reset" class="btn btn-outline-secondary w-100" id="btnReset">Reset</button>
+                </div>
+              </div>
+            </form>
+
+            <!-- Tiket hasil booking (diisi lewat JavaScript) -->
+            <div class="alert alert-success ticket d-none" id="ticket" role="status" aria-live="polite"></div>
+
+            <!-- Tabel riwayat booking (Format Tabel Bootstrap) -->
+            <h3 class="history__title">Riwayat Booking <span class="badge text-bg-danger" id="jumlahBooking">0</span>
+            </h3>
+            <div class="table-responsive">
+              <table class="table table-striped table-hover table-bordered history__table">
+                <thead class="table-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Antrean</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Motor</th>
+                    <th scope="col">Layanan</th>
+                    <th scope="col">Metode</th>
+                    <th scope="col">Tanggal</th>
+                  </tr>
+                </thead>
+                <tbody id="historyBody">
+                  <tr id="emptyRow">
+                    <td colspan="7" class="text-center text-muted">Belum ada booking.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ (accordion) ===== -->
+    <section class="section section--alt" id="faq">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title">Pertanyaan Umum</h2>
+        </header>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-item__head" aria-expanded="false">Berapa lama waktu servis rutin?</button>
+            <div class="faq-item__body">
+              <p>Servis rutin umumnya selesai dalam 45–60 menit, tergantung antrean dan kondisi motor.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__head" aria-expanded="false">Apakah ada garansi servis?</button>
+            <div class="faq-item__body">
+              <p>Ya, setiap servis bergaransi 7 hari dan sparepart original bergaransi sesuai ketentuan pabrikan.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__head" aria-expanded="false">Bisa servis panggilan ke rumah?</button>
+            <div class="faq-item__body">
+              <p>Bisa, untuk area maksimal 5 km dari bengkel dengan biaya tambahan Rp25.000.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-item__head" aria-expanded="false">Metode pembayaran apa saja?</button>
+            <div class="faq-item__body">
+              <p>Tunai, transfer bank, dan QRIS untuk semua e-wallet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== KONTAK ===== -->
+    <section class="section" id="kontak">
+      <div class="container contact">
+        <article class="contact__card">
+          <h3>📍 Alamat</h3>
+          <address>Jl. Imam Bonjol No. 207, Semarang, Jawa Tengah</address>
+        </article>
+        <article class="contact__card">
+          <h3>📞 Telepon / WA</h3>
+          <p>0812-3456-7890</p>
+        </article>
+        <article class="contact__card">
+          <h3>🕗 Jam Operasional</h3>
+          <p>Senin – Minggu, 08.00 – 20.00 WIB</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER + IDENTITAS MAHASISWA ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+          <p class="footer__brand">Sinar<strong>Jaya</strong> Motor</p>
+          <p>&copy; <span id="year"></span> Bengkel Motor Sinar Jaya. Semua hak dilindungi.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <div class="identity">
+            <p class="identity__label">Disusun oleh</p>
+            <p class="identity__name">Akrom Taufiqurrozak</p>
+            <p class="identity__nim">NIM: A12.2025.07419</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Kembali ke atas">↑</button>
+
+  <!-- JavaScript buatan sendiri (tidak memakai jQuery / JS Bootstrap) -->
+  <script src="script.js"></script>
+</body>
+
+</html>
